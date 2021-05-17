@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace serti.babel.data.context_data
+namespace serti.babel.data.Context
 {
     public partial class Location
     {
@@ -10,5 +10,7 @@ namespace serti.babel.data.context_data
         public string Room { get; set; }
         public string Bookseller { get; set; }
         public string Position { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

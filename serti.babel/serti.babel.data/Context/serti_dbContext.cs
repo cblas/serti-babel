@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace serti.babel.data.context_data
+namespace serti.babel.data.Context
 {
     public partial class serti_dbContext : DbContext
     {
@@ -29,13 +29,15 @@ namespace serti.babel.data.context_data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
-
             modelBuilder.Entity<Book>(entity =>
             {
                 entity.ToTable("book");
 
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.IdLocation).HasColumnName("id_location");
 
@@ -43,6 +45,10 @@ namespace serti.babel.data.context_data
                     .IsRequired()
                     .HasColumnName("title")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnName("updated_at")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.VolumeNumber)
                     .IsRequired()
@@ -60,6 +66,10 @@ namespace serti.babel.data.context_data
                     .HasColumnName("bookseller")
                     .HasMaxLength(100);
 
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime");
+
                 entity.Property(e => e.Position)
                     .HasColumnName("position")
                     .HasMaxLength(100);
@@ -71,6 +81,10 @@ namespace serti.babel.data.context_data
                 entity.Property(e => e.Shelf)
                     .HasColumnName("shelf")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnName("updated_at")
+                    .HasColumnType("datetime");
             });
         }
     }
