@@ -6,15 +6,15 @@ namespace serti.babel.app.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class LocationsController : Controller
+    public class BooksController : Controller
     {
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                var locations = LocationService.Get();
-                return Ok(locations);
+                var books = BookService.Get();
+                return Ok(books);
             }
             catch
             {
@@ -23,35 +23,35 @@ namespace serti.babel.app.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(LocationViewModel locationViewModel)
+        public IActionResult Create(BookViewModel bookViewModel)
         {
             try
             {
-                if (locationViewModel == null)
+                if (bookViewModel == null)
                     return BadRequest();
 
                 string message = string.Empty;
-                var isCreated = LocationService.Create(locationViewModel);
+                var isCreated = BookService.Create(bookViewModel);
                 message = isCreated ? "Saved" : "Not Saved";
 
                 return Ok(new { message = message });
             }
-            catch 
+            catch
             {
                 return StatusCode(500);
             }
         }
 
         [HttpPut]
-        public IActionResult Update(LocationViewModel locationViewModel)
+        public IActionResult Update(BookViewModel bookViewModel)
         {
             try
             {
-                if (locationViewModel.Id == null || locationViewModel == null)
+                if (bookViewModel.Id == null || bookViewModel == null)
                     return BadRequest();
 
                 string message = string.Empty;
-                var isUpdated = LocationService.Create(locationViewModel);
+                var isUpdated = BookService.Create(bookViewModel);
                 message = isUpdated ? "Updated" : "Not Updated";
 
                 return Ok(new { message = message });
@@ -63,15 +63,15 @@ namespace serti.babel.app.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int? idLocation)
+        public IActionResult Delete(int? idBook)
         {
             try
             {
-                if (idLocation == null)
+                if (idBook == null)
                     return BadRequest();
 
                 string message = string.Empty;
-                var isoDeleted = LocationService.Delete((int)idLocation);
+                var isoDeleted = BookService.Delete((int)idBook);
                 message = isoDeleted ? "Deleted" : "Not Deleted";
 
                 return Ok(new { message = message });

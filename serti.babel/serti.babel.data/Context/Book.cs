@@ -11,5 +11,7 @@ namespace serti.babel.data.Context
         public string Title { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+
+        public Location IdLocationNavigation { get; set; }
     }
 }

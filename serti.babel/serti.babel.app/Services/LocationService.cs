@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace serti.babel.app.Services.Location
+namespace serti.babel.app.Services
 {
     public class LocationService
     {
@@ -40,7 +40,6 @@ namespace serti.babel.app.Services.Location
             {
                 var location = new Location()
                 {
-                    Id = locationViewModel.Id,
                     Shelf = locationViewModel.Shelf,
                     Room = locationViewModel.Room,
                     Bookseller = locationViewModel.Bookseller,
@@ -49,7 +48,7 @@ namespace serti.babel.app.Services.Location
                     UpdatedAt = DateTime.Now
                 };
 
-                _dbContext.Add(location);
+                _dbContext.Location.Add(location);
                 return _dbContext.SaveChanges() > 0;
             }
         }

@@ -23,7 +23,7 @@ namespace serti.babel.data.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-AVAFUTS\\SQLEXPRESS; Database=serti_db; Integrated Security=true");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-AVAFUTS\\SQLEXPRESS; Database=serti_db; Integrated Security=True");
             }
         }
 
@@ -54,6 +54,12 @@ namespace serti.babel.data.Context
                     .IsRequired()
                     .HasColumnName("volume_number")
                     .HasMaxLength(100);
+
+                entity.HasOne(d => d.IdLocationNavigation)
+                    .WithMany(p => p.Book)
+                    .HasForeignKey(d => d.IdLocation)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_book_location");
             });
 
             modelBuilder.Entity<Location>(entity =>
