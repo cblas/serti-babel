@@ -26,7 +26,7 @@ namespace serti.babel.app.Services
                         Position = book.IdLocationNavigation.Position
                     },
                     VolumeNumber = book.VolumeNumber,
-                    Title = book.VolumeNumber,
+                    Title = book.Title,
                 }).ToList();
 
                 return booksVm;

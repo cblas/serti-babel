@@ -23,7 +23,7 @@ namespace serti.babel.app.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(BookViewModel bookViewModel)
+        public IActionResult Create([FromBody] BookViewModel bookViewModel)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace serti.babel.app.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update(BookViewModel bookViewModel)
+        public IActionResult Update([FromBody] BookViewModel bookViewModel)
         {
             try
             {
@@ -63,7 +63,8 @@ namespace serti.babel.app.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int? idBook)
+        [Route("Delete")]
+        public IActionResult Delete([FromBody] int? idBook)
         {
             try
             {

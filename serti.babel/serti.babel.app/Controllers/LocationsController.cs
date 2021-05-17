@@ -23,7 +23,7 @@ namespace serti.babel.app.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(LocationViewModel locationViewModel)
+        public IActionResult Create([FromBody] LocationViewModel locationViewModel)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace serti.babel.app.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update(LocationViewModel locationViewModel)
+        public IActionResult Update([FromBody] LocationViewModel locationViewModel)
         {
             try
             {
@@ -63,7 +63,8 @@ namespace serti.babel.app.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int? idLocation)
+        [Route("Delete")]
+        public IActionResult Delete([FromBody] int? idLocation)
         {
             try
             {
